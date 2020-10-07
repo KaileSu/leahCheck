@@ -1,5 +1,11 @@
+const MongoClient = require('mongodb').MongoClient;
+// const url = 'mongodb://localhost:27017/';
+const url = "mongodb+srv://karma:amtf88@karma-g8nlc.mongodb.net/test?w=majority"
+
+
+
 exports.insert = function(req, res) {
-    MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
         if (err) throw err;
         let db = client.db("dbName"); // Create a Product
         let doc = req.body;
@@ -8,14 +14,15 @@ exports.insert = function(req, res) {
             console.log("Inserted the following document into the collection:");
             console.log(doc);
             res.send(doc);
-            client.close();
+            client.close();  
         });
     });
 };
 
 exports.find = function(req, res) {
-    MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
         if (err) throw err;
+        console.log("connected");
         let db = client.db("dbName");
         let doc = req.body;
         // Use the method as promise
@@ -28,7 +35,7 @@ exports.find = function(req, res) {
 };
 
 exports.update = function(req, res) {
-    MongoClient.connect(url, function(err, client) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client) {
         if (err) throw err;
         let db = client.db("dbName");
         db.collection("colName", function(err, collection) {
