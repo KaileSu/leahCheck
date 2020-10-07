@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <title>Login Chat App</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <h2>Login Page</h2>
+                <hr>
+            </div>
+            <nav>
+                <ul>
+                    <li><a routerLink="/login-component" routerLinkActive="active">Login</a></li>
+                </ul>
+            </nav>
+            <div class="row">
+                Logged-in in as: 
+                <div *ngFor="let item of userArray">
+                    {{username}}
+                </div>
+                <br> 
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" [(ngModel)]="username" class="form-control" id="username" placeholder="Enter username">
+                        <!-- <small id="userHelp" class="form-text text-muted">Type your username.</small> -->
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" [(ngModel)]="email" class="form-control" id="email" placeholder="Enter email address">
+                        <!-- <small id="userHelp" class="form-text text-muted">Type your username.</small> -->
+                    </div>
+                </div>
+                <div class="col sm-2">
+                    <div style="margin-top:19px;" class="pull-right">
+                        <button type="submit" class="btn btn-primary" (click)="submit()">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+    </body>
+</html>

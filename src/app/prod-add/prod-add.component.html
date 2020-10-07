@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <title>Chat App</title>
+    </head>
+    <body>
+        <h3>Create a User</h3>
+        <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                <div *ngIf="submitted && f.username.errors">
+                    <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                <div *ngIf="submitted && f.email.errors">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>User Type:</label>
+                <input type="text" formControlName="type" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
+                <div *ngIf="submitted && f.type.errors">
+                    <div *ngIf="f.type.errors.required">User Type is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="text" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                <div *ngIf="submitted && f.password.errors">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info">Add New User</button>
+        </form>
+        <!-- <br>
+        Username:
+        <br>
+        <input type="text" [(ngModel)]="prod.username">
+        <br>
+        Email:
+        <br>
+        <input type="text" [(ngModel)]="prod.email">
+        <br>
+        User Type:
+        <br>
+        <input type="text" [(ngModel)]="prod.type">
+        <br>
+        Password:
+        <br>
+        <input type="text" [(ngModel)]="prod.password">
+        <br>
+        <button class="submit" id="insert" (click)="insertfunc()">Insert</button> -->
+    </body>
+</html>
