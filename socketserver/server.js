@@ -23,7 +23,7 @@ const products = require('./dbOperations/operations'); // Define a sequence of d
 app.post('/productInsert', products.insert);
 app.get('/productFind', products.find);
 app.post('/productUpdate', products.update);
-app.post('/productDelete', products.delete);
+app.post('/productDelete', products.delete); 
 
 io.on('connection', function(socket) {
     console.log('A user connected');

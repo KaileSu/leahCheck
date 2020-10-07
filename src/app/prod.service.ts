@@ -21,11 +21,11 @@ export class ProdService {
   // Update products with proQuery and set prodUpdate, returning a promise
   productUpdate(prodQuery, prodUpdate) {
     const queryUpdate = {query: prodQuery, update: prodUpdate};
-    return this.http.put(this.url + 'productUpdate', queryUpdate);
+    return this.http.post(this.url + 'productUpdate', queryUpdate);
   }
   // Delete a product
   productDelete(prod) {
     console.log(prod);
-    return this.http.delete(this.url + 'productDelete', prod);
+    return this.http.post(this.url + 'productDelete', prod);
   }
 };

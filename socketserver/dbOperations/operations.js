@@ -1,5 +1,8 @@
-const MongoClient = require('mongodb').MongoClient;
+// const MongoClient = require('mongodb').MongoClient;
+const { MongoClient, ObjectID } = require('mongodb');
+
 // const url = 'mongodb://localhost:27017/';
+// ObjectId = mongodb.ObjectID;
 const url = "mongodb+srv://karma:amtf88@karma-g8nlc.mongodb.net/test?w=majority"
 
 
@@ -20,6 +23,7 @@ exports.insert = function(req, res) {
 };
 
 exports.find = function(req, res) {
+    console.log("find route hitted");
     MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
         if (err) throw err;
         console.log("connected");
@@ -35,12 +39,13 @@ exports.find = function(req, res) {
 };
 
 exports.update = function(req, res) {
+    console.log("update route hitted");
     MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client) {
         if (err) throw err;
         let db = client.db("dbName");
         db.collection("colName", function(err, collection) {
-            let queryJSON = req.params;
-            let updateJSON = req.body;
+            let queryJSON = req.body.query;
+            let updateJSON = req.body.update;
             // Update document with queryJSON, set updateJSON
             collection.updateMany(queryJSON, { $set: updateJSON }, function(err, result) {
                 console.log("For the documents with", queryJSON);
@@ -53,11 +58,16 @@ exports.update = function(req, res) {
 };
 
 exports.delete = function(req, res) {
-    MongoClient.connect(url, function(err, client) {
+    console.log("delte route hitted");
+    MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
         if (err) throw err;
         let db = client.db("dbName");
         db.collection("colName", function(err, collection) {
-            let queryJSON = req.body;
+            let id = ObjectID(req.body._id); 
+            // let id = req.body._id;
+            console.log(id);
+
+            let queryJSON = {_id: id};
             collection.deleteMany(queryJSON, function(err, result) {
                 console.log("Removed the documents with: ", queryJSON);
                 res.send(queryJSON);

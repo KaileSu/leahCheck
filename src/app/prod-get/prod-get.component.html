@@ -22,7 +22,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let prod of prods">
-                    <td>{{ prod.name }}</td>
+                    <td>{{ prod.username }}</td>
                     <td>{{ prod.email }}</td>
                     <td>{{ prod.type }}</td>
                     <td><button (click)="deleteProduct(prod)" class="btn btn-danger">Delete</button></td>

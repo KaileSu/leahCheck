@@ -23,7 +23,7 @@ export class ProdGetComponent implements OnInit {
   }
   // Delete the selected products
   deleteProduct(product: ProdModel) {
-    this.prodService.productDelete({_id: product._id});
+    this.prodService.productDelete({_id: product._id}).subscribe((res => console.log('Done')));
   }
   // Update the selected product, not considering property _id
   // Product Information is saved as localStorage to be used in the navigated page
@@ -31,6 +31,6 @@ export class ProdGetComponent implements OnInit {
     localStorage.removeItem('product');
     delete product._id;
     localStorage.setItem('product', JSON.stringify(product));
-    this.router.navigate(['prod-edit']);
+    this.router.navigateByUrl('/prodedit-component');
   }
 }

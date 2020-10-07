@@ -15,7 +15,8 @@ export class ProdEditComponent implements OnInit {
   ngOnInit() { }
 
   editfunc() {
-    this.prodService.productUpdate(this.prodOrigin, this.prod).subscribe(data => {
+    this.prodService.productUpdate(this.prodOrigin, this.prod)
+    .subscribe(data => {
       console.log(data);
       this.router.navigate(['']);
     });
